@@ -22,4 +22,6 @@ export const list = async (): Promise<void> => {
       readfunc.enabled,
     ]);
   }
+
+  console.log(table.toString());
 };
