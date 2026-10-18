@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="../../assets/schrun-logo.jpg" alt="schrun logo">
+</p>
+
 # schrun
 
 `schrun` is a small task runner. It reads task definitions from JSON files and can run them in the foreground, start them in the background, or schedule enabled tasks with cron expressions.
