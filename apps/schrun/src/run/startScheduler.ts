@@ -3,7 +3,7 @@ import { writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { PID_FILE } from "../constant/app.ts";
 
-export const startschedule = async (): Promise<void> => {
+export const startSchedule = async (): Promise<void> => {
   const daemonPath = fileURLToPath(new URL("./daemon.mjs", import.meta.url));
 
   const child = spawn(process.execPath, [daemonPath], {

@@ -2,7 +2,7 @@ import { readFile, unlink } from "node:fs/promises";
 import { PID_FILE } from "../constant/app.ts";
 import { consola } from "consola";
 
-export const stopschedule = async (): Promise<void> => {
+export const stopSchedule = async (): Promise<void> => {
   let pid: number;
 
   try {
