@@ -7,21 +7,21 @@ export const stopschedule = async (): Promise<void> => {
 
   try {
     pid = Number(await readFile(PID_FILE, "utf-8"));
-  } catch {
-    consola.warn("no look schedule pid file");
+  } catch (error) {
+    consola.warn("No look schedule pid file");
     return;
   }
 
   if (!Number.isSafeInteger(pid) || pid <= 0) {
-    consola.error("warning pid files");
+    consola.error("Unsafe pid files");
     return;
   }
 
   try {
     process.kill(pid, "SIGINT");
-    consola.success("send stop to scheduler");
+    consola.success("Success Send stop scheduler");
   } catch (error) {
-    consola.error("failed stop to scheduler", error);
+    consola.error("Failed Send stop scheduler", error);
     return;
   }
 

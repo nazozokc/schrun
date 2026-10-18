@@ -1,5 +1,5 @@
 import { spawn } from "node:child_process";
-import { open, writeFile } from "node:fs/promises";
+import { writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { PID_FILE } from "../constant/app.ts";
 
@@ -16,9 +16,9 @@ export const startschedule = async (): Promise<void> => {
   }
 
   child.on("error", (error) => {
-    console.error("Failed to start daemon:", error);
+    throw new Error("Failed to start daemon:", error);
   });
 
-  await writeFile(PID_FILE, String(child.pid));
+  await writeFile(PID_FILE, String(child.pid), "utf-8");
   child.unref();
 };
