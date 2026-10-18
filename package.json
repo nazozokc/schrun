@@ -1,5 +1,5 @@
 {
-  "name": "atr",
+  "name": "schrun",
   "module": "index.ts",
   "devDependencies": {
     "@types/bun": "latest"
