@@ -13,7 +13,7 @@
     },
     "apps/schrun": {
       "name": "schrun",
-      "version": "0.1.0",
+      "version": "0.2.3",
       "bin": {
         "schrun": "./dist/index.mjs",
       },
