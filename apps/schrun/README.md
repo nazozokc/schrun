@@ -6,6 +6,9 @@
 
 `schrun` is a small task runner. It reads task definitions from JSON files and can run them in the foreground, start them in the background, or schedule enabled tasks with cron expressions.
 
+> [!TIP]
+> `schrun` is a completely independent package and is not related to any other tools.
+
 ## Requirements
 
 - [Bun](https://bun.sh/)
