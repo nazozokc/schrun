@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../../assets/schrun-logo.jpg" alt="schrun logo">
+  <img src="../../assets/schrun-logo-small.jpg" alt="schrun logo">
 </p>
 
 # schrun
