@@ -5,6 +5,7 @@ import { runsurface } from "../../run/surface.ts";
 import { consola } from "consola";
 import { CLI_COMMAND_NAME } from "../../constant/app.ts";
 import { runCommand } from "../run/index.ts";
+import { listCommand } from "../list/index.ts";
 
 export const mainCommand = async (): Promise<void> => {
   const RunmainCommand = define({
@@ -50,6 +51,7 @@ export const mainCommand = async (): Promise<void> => {
     name: CLI_COMMAND_NAME,
     subCommands: {
       run: runCommand,
+      list: listCommand,
     },
   });
 };
