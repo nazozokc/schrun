@@ -17,6 +17,6 @@ export const readJSON = async (FileName: string): Promise<FileType> => {
       throw consola.log("failed return data files\n", error);
     }
   } else {
-    consola.error("The configuration format is invalid");
+    throw consola.error("The configuration format is invalid");
   }
 };
