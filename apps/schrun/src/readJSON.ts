@@ -14,5 +14,9 @@ export const readJSON = async (FileName: string): Promise<FileType> => {
     throw consola.error(safeParseSchema.error);
   }
 
-  return safeParseSchema.data as FileType;
+  try {
+    return safeParseSchema.data as FileType;
+  } catch (error) {
+    throw consola.log("failed return data files\n", error);
+  }
 };
