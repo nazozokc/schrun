@@ -68,4 +68,4 @@ jobs:
 
       - name: Publish to npm
         working-directory: apps/schrun
-        run: npm publish --access public
+        run: npm publish
