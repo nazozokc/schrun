@@ -12,6 +12,9 @@
     "name": "nazozokc",
     "url": "https://github.com/nazozokc"
   },
+  "scripts": {
+    "build": "bunx tsdown"
+  },
   "files": [
     "dist",
     "package.json",
