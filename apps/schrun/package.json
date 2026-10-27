@@ -7,7 +7,10 @@
   "bin": {
     "schrun": "./dist/index.mjs"
   },
-  "url": "https://github.com/nazozokc/schrun",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nazozokc/schrun.git"
+  },
   "author": {
     "name": "nazozokc",
     "url": "https://github.com/nazozokc"
