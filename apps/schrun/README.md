@@ -22,8 +22,8 @@ bun install
 Until a published package is available, run the CLI from the repository root with Bun:
 
 ```sh
-bun run apps/schrun/src/index.ts --surface hello
-bun run apps/schrun/src/index.ts --background hello
+bunx schrun --surface hello
+bunx schrun --background hello
 ```
 
 The task name is passed without the `.json` extension. schrun reads `~/.config/schrun/<name>.json`.
@@ -49,20 +49,20 @@ Every field is required: `id` (number), `description` (string), `cron` (cron exp
 Foreground mode inherits standard input/output and waits for the command to finish:
 
 ```sh
-bun run apps/schrun/src/index.ts --surface hello
+bunx schrun --surface hello
 ```
 
 Detached background mode ignores standard input/output and returns after starting the process:
 
 ```sh
-bun run apps/schrun/src/index.ts --background hello
+bunx schrun --background hello
 ```
 
 Start or stop the scheduler:
 
 ```sh
-bun run apps/schrun/src/index.ts run --start
-bun run apps/schrun/src/index.ts run --stop
+bunx schrun run --start
+bunx schrun run --stop
 ```
 
 ## Limitations
