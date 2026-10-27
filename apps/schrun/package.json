@@ -15,6 +15,7 @@
   "files": [
     "dist",
     "package.json",
+    "bun.lock",
     "README.md"
   ],
   "devDependencies": {
