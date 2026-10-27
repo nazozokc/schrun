@@ -2,7 +2,6 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { CONFIG_DIR } from "./constant/app";
 import { type FileType } from "./type";
-import { consola } from "consola";
 import typia from "typia";
 
 export const readJSON = async (FileName: string): Promise<FileType> => {
@@ -11,12 +10,8 @@ export const readJSON = async (FileName: string): Promise<FileType> => {
   const readparse = JSON.parse(reads);
 
   if (typia.is<FileType>(readparse)) {
-    try {
-      return readparse as FileType;
-    } catch (error) {
-      throw consola.log("failed return data files\n", error);
-    }
+    return readparse as FileType;
   } else {
-    throw consola.error("The configuration format is invalid");
+    throw "The configuration format is invalid";
   }
 };
