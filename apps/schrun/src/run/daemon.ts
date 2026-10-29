@@ -18,6 +18,7 @@ export const startschedule = async (): Promise<void> => {
     const [commands, ...args] = fileread.run.split(/\+s/);
 
     if (!commands) continue;
+
     cron.schedule(fileread.cron, () => {
       spawn(commands, args, {
         stdio: "ignore",

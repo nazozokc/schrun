@@ -8,7 +8,7 @@ export const stopSchedule = async (): Promise<void> => {
   try {
     pid = Number(await readFile(PID_FILE, "utf-8"));
   } catch (error) {
-    consola.warn("No look schedule pid file");
+    consola.warn("No Look Schedule Pid File");
     return;
   }
 
@@ -19,9 +19,9 @@ export const stopSchedule = async (): Promise<void> => {
 
   try {
     process.kill(pid, "SIGINT");
-    consola.success("Success Send stop scheduler");
+    consola.success("Failed Send Stop Scheduler");
   } catch (error) {
-    consola.error("Failed Send stop scheduler", error);
+    consola.error("Failed Send Stop Scheduler\n", error);
     return;
   }
 
