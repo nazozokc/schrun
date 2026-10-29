@@ -1,6 +1,11 @@
 {
   "name": "schrun",
   "module": "index.ts",
+  "scripts": {
+    "docs:dev": "cd apps/schrun && bun run docs:dev",
+    "docs:build": "cd apps/schrun && bun run docs:build",
+    "docs:preview": "cd apps/schrun && bun run docs:preview"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },

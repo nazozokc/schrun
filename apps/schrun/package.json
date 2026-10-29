@@ -16,7 +16,10 @@
     "url": "https://github.com/nazozokc"
   },
   "scripts": {
-    "build": "bunx tsdown"
+    "build": "bunx tsdown",
+    "docs:dev": "bunx vitepress dev docs",
+    "docs:build": "bunx vitepress build docs",
+    "docs:preview": "bunx vitepress preview docs"
   },
   "files": [
     "dist",
@@ -26,7 +29,8 @@
   ],
   "devDependencies": {
     "@types/bun": "latest",
-    "tsdown": "latest"
+    "tsdown": "latest",
+    "vitepress": "^1.6.4"
   },
   "peerDependencies": {
     "typescript": "^7"
