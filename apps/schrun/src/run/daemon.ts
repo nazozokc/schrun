@@ -1,39 +1,33 @@
-import cron from "node-cron";
-import { spawn } from "node:child_process";
-import { readJSON } from "../readJSON.ts";
 import { readdir } from "node:fs/promises";
-import { CONFIG_DIR } from "../constant/app.ts";
+import { CONFIG_DIR } from "../constant/app";
+import { readJSON } from "../readJSON";
+import { spawn } from "node:child_process";
+import cron from "node-cron";
 import { consola } from "consola";
 
 export const startschedule = async (): Promise<void> => {
-  const readConfig = await readdir(CONFIG_DIR);
+  const readScheduleJSON = await readdir(CONFIG_DIR);
 
-  for (const filename of readConfig) {
-    if (!filename.endsWith(".json")) continue;
-    if (filename.match("pid.json")) continue;
-    const [filenamesplit] = filename.split(".");
-    const read = await readJSON(filenamesplit!);
+  for (const readSchedule of readScheduleJSON) {
+    if (readSchedule.endsWith(".json")) continue;
+    if (readSchedule.match("pid.json")) continue;
 
-    if (!read.enabled) continue;
+    const [filenamesplit] = readSchedule.split(".");
+    const fileread = await readJSON(filenamesplit!);
 
-    const [command, ...args] = read.run.trim().split(/\s+/);
+    const [commands, ...args] = fileread.run.split(/\+s/);
 
-    if (!command) continue;
-
-    cron.schedule(read.cron, () => {
-      const cronspawn = spawn(command!, args!, {
+    if (!commands) continue;
+    cron.schedule(fileread.cron, () => {
+      spawn(commands, args, {
+        stdio: "ignore",
         detached: true,
-        stdio: "inherit",
-      });
-
-      cronspawn.on("error", (error) => {
-        consola.error(`コマンドの起動に失敗: ${command}`, error);
       });
     });
   }
 };
 
 startschedule().catch((error) => {
-  consola.error("failed to up scheduler", error);
+  consola.error("Do not runnning daemon\n", error);
   process.exitCode = 1;
 });
