@@ -10,7 +10,7 @@ export const startschedule = async (): Promise<void> => {
 
   for (const readSchedule of readScheduleJSON) {
     if (!readSchedule.endsWith(".json")) continue;
-    if (readSchedule.match("pid.json")) continue;
+    if (readSchedule === "pid.json") continue;
 
     const [filenamesplit] = readSchedule.split(".");
     const fileread = await readJSON(filenamesplit!);
