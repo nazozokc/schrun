@@ -34,7 +34,7 @@ export const startschedule = async (): Promise<void> => {
   }
 };
 
-startschedule().catch((error) => {
+await startschedule().catch((error) => {
   consola.error("Do not runnning daemon\n", error);
   process.exitCode = 1;
 });
