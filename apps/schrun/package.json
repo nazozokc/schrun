@@ -33,7 +33,7 @@
     "vitepress": "^1.6.4"
   },
   "peerDependencies": {
-    "typescript": "^7"
+    "typescript": "^7.0.2"
   },
   "dependencies": {
     "cli-table3": "^0.6.5",
