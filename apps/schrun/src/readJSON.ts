@@ -1,17 +1,22 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { CONFIG_DIR } from "./constant/app";
-import { type FileType } from "./type";
-import typia from "typia";
+import { fileSchema, type FileType } from "./type";
+import { consola } from "consola";
 
 export const readJSON = async (FileName: string): Promise<FileType> => {
   const file = join(CONFIG_DIR, `${FileName}.json`);
   const reads = await readFile(file, "utf-8");
-  const readparse = JSON.parse(reads);
 
-  if (typia.is<FileType>(readparse)) {
-    return readparse as FileType;
-  } else {
-    throw "The configuration format is invalid";
+  const safeParseSchema = fileSchema.safeParse(JSON.parse(reads));
+
+  if (!safeParseSchema.success) {
+    throw consola.error(safeParseSchema.error);
+  }
+
+  try {
+    return safeParseSchema.data as FileType;
+  } catch (error) {
+    throw consola.log("failed return data files\n", error);
   }
 };
