@@ -20,9 +20,13 @@ export const startschedule = async (): Promise<void> => {
     if (!commands) continue;
 
     cron.schedule(fileread.cron, () => {
-      spawn(commands, args, {
+      const cronspawn = spawn(commands, args, {
         stdio: "ignore",
         detached: true,
+      });
+
+      cronspawn.on("error", (error) => {
+        consola.error(`コマンドの起動に失敗: ${commands}`, error);
       });
     });
   }
