@@ -15,18 +15,20 @@ export const startschedule = async (): Promise<void> => {
     const [filenamesplit] = readSchedule.split(".");
     const fileread = await readJSON(filenamesplit!);
 
-    const [commands, ...args] = fileread.run.split(/\+s/);
+    if (!fileread.enabled) continue;
 
-    if (!commands) continue;
+    const [command, ...args] = fileread.run.trim().split(/\+s/);
+
+    if (!command) continue;
 
     cron.schedule(fileread.cron, () => {
-      const cronspawn = spawn(commands, args, {
-        stdio: "ignore",
+      const cronspawn = spawn(command, args, {
+        stdio: "inherit",
         detached: true,
       });
 
       cronspawn.on("error", (error) => {
-        consola.error(`コマンドの起動に失敗: ${commands}`, error);
+        consola.error(`コマンドの起動に失敗: ${command}`, error);
       });
 
       cronspawn.unref();
