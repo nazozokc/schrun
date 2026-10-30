@@ -30,8 +30,6 @@ export const startschedule = async (): Promise<void> => {
       cronspawn.on("error", (error) => {
         consola.error(`コマンドの起動に失敗: ${command}`, error);
       });
-
-      cronspawn.unref();
     });
   }
 };

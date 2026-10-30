@@ -7,7 +7,6 @@ import { consola } from "consola";
 export const readJSON = async (FileName: string): Promise<FileType> => {
   const file = join(CONFIG_DIR, `${FileName}.json`);
   const reads = await readFile(file, "utf-8");
-
   const safeParseSchema = fileSchema.safeParse(JSON.parse(reads));
 
   if (!safeParseSchema.success) {
@@ -15,7 +14,7 @@ export const readJSON = async (FileName: string): Promise<FileType> => {
   }
 
   try {
-    return safeParseSchema.data as FileType;
+    return safeParseSchema.data;
   } catch (error) {
     throw consola.log("failed return data files\n", error);
   }
