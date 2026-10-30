@@ -6,7 +6,7 @@ import cron from "node-cron";
 import { consola } from "consola";
 
 export const startschedule = async (): Promise<void> => {
-  const readScheduleJSON = await readdir(CONFIG_DIR);
+  const readScheduleJSON = await readdir(CONFIG_DIR, "utf-8");
 
   for (const readSchedule of readScheduleJSON) {
     if (readSchedule.endsWith(".json")) continue;
