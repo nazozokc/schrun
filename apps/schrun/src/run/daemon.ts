@@ -9,7 +9,7 @@ export const startschedule = async (): Promise<void> => {
   const readScheduleJSON = await readdir(CONFIG_DIR, "utf-8");
 
   for (const readSchedule of readScheduleJSON) {
-    if (readSchedule.endsWith(".json")) continue;
+    if (!readSchedule.endsWith(".json")) continue;
     if (readSchedule.match("pid.json")) continue;
 
     const [filenamesplit] = readSchedule.split(".");
