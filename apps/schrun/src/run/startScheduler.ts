@@ -1,4 +1,4 @@
-import { fork } from "node:child_process";
+import { spawn } from "node:child_process";
 import { writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { PID_FILE } from "../constant/app.ts";
@@ -8,7 +8,7 @@ export const startSchedule = async (): Promise<void> => {
   try {
     const daemonPath = fileURLToPath(new URL("./daemon.mjs", import.meta.url));
 
-    const child = fork(daemonPath, [], {
+    const child = spawn(process.execPath, [daemonPath], {
       detached: true,
       stdio: "ignore",
     });
