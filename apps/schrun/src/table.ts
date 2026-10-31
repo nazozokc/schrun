@@ -1,7 +1,7 @@
 import Table from "cli-table3";
 import { readdir } from "node:fs/promises";
 import { CONFIG_DIR } from "./constant/app";
-import { readJSON } from "./readJSON";
+import { readConfig } from "./readJSON";
 import { consola } from "consola";
 
 export const list = async (): Promise<void> => {
@@ -17,7 +17,7 @@ export const list = async (): Promise<void> => {
   for (const readdir of read) {
     if (readdir.match("pid.json")) continue;
     const [splits] = readdir.split(".");
-    const readfunc = await readJSON(splits!);
+    const readfunc = await readConfig(splits!);
 
     table.push([
       readfunc.description,
