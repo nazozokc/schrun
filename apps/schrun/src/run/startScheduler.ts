@@ -14,11 +14,11 @@ export const startSchedule = async (): Promise<void> => {
     });
 
     if (child.pid === undefined) {
-      throw new Error("Failed to start daemon");
+      new Error("Failed to start daemon");
     }
 
     child.on("error", (error) => {
-      throw new Error("Failed to start daemon:", error);
+      new Error("Failed to start daemon:", error);
     });
 
     await writeFile(PID_FILE, String(child.pid), "utf-8");
@@ -27,5 +27,6 @@ export const startSchedule = async (): Promise<void> => {
     consola.success("Success start scheduler");
   } catch (error) {
     consola.error("Error start schedule\n", error);
+    return;
   }
 };
