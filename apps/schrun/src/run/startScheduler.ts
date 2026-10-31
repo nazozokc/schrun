@@ -8,7 +8,7 @@ export const startSchedule = async (): Promise<void> => {
   try {
     const daemonPath = fileURLToPath(new URL("./daemon.mjs", import.meta.url));
 
-    const child = fork(process.execPath, [daemonPath], {
+    const child = fork(daemonPath, [], {
       detached: true,
       stdio: "ignore",
     });
