@@ -19,7 +19,7 @@ export const stopSchedule = async (): Promise<void> => {
 
   try {
     process.kill(pid, "SIGINT");
-    consola.success("Failed Send Stop Scheduler");
+    consola.success("Successfully sent stop signal to scheduler");
   } catch (error) {
     consola.error("Failed Send Stop Scheduler\n", error);
     return;
