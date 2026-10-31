@@ -1,6 +1,6 @@
 import { readdir } from "node:fs/promises";
 import { CONFIG_DIR } from "../constant/app";
-import { readJSON } from "../readJSON";
+import { readConfig } from "../readJSON";
 import { spawn } from "node:child_process";
 import cron from "node-cron";
 import { consola } from "consola";
@@ -13,7 +13,7 @@ export const startschedule = async (): Promise<void> => {
     if (readSchedule === "pid.json") continue;
 
     const [filenamesplit] = readSchedule.split(".");
-    const fileread = await readJSON(filenamesplit!);
+    const fileread = await readConfig(filenamesplit!);
 
     if (!fileread.enabled) continue;
 
